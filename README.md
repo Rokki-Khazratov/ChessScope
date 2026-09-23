@@ -40,6 +40,8 @@ Start with [docs/README.md](docs/README.md). The context is organized into:
 - `docs/product/` — vision, users, requirements, boundaries, and success criteria;
 - `docs/research/` — ChessBase benchmark, competitors, data rights, and risks;
 - `docs/architecture/` — system, data, analytics, engines, AI, and security;
+- `docs/backend/` — executable backend specification, system design, PostgreSQL schema, and implementation phases;
+- `docs/integrations/` — approved, permission-first, and reference-only API/OSINT sources;
 - `docs/design/` — canonical UI/UX direction, design tokens, page blueprints, and interaction rules;
 - `docs/ux/` — information architecture and core workflows;
 - `docs/delivery/` — roadmap and validation strategy;
@@ -53,7 +55,7 @@ The project follows this order:
 DATA -> INDEX -> STATISTICS -> EVIDENCE -> TOOLS -> AI -> POLISH
 ```
 
-Implementation should not begin until the Phase 0 exit criteria in the roadmap are accepted.
+Implementation should not begin until the Phase 0 exit criteria in the roadmap and the backend B0 gates are accepted. The implementation sequence is defined in [the backend phased plan](docs/backend/PHASED_IMPLEMENTATION_PLAN.md).
 
 ## License
 

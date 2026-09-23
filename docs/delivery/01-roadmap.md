@@ -4,6 +4,8 @@ Status: outcome-based plan; dates begin after project kickoff
 
 The roadmap follows validated outcomes, not a promise to ship every listed feature. The long-term scale target is ChessBase-class capability, reached through measured stages.
 
+Backend delivery phases B0–B8, with implementation scope and acceptance gates, are defined in [Backend phased implementation plan](../backend/PHASED_IMPLEMENTATION_PLAN.md). Those phases refine rather than replace this product roadmap.
+
 ## Phase 0 — de-risk the foundation (0–3 months)
 
 No production feature sprint should replace this work.

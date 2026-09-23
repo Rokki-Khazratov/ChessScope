@@ -3,6 +3,8 @@
 Status: engineering guidance; legal review still required
 Reviewed: 2026-09-23
 
+The actionable provider/API link register and integration priority are maintained in [Integration and OSINT source catalog](../integrations/INTEGRATION_OSINT_CATALOG.md).
+
 This document is not legal advice. Access to data, rights to process it, rights to redistribute it, and rights to train models on it are separate questions.
 
 ## Data principles
@@ -19,10 +21,14 @@ This document is not legal advice. Access to data, rights to process it, rights 
 | Source | Intended use | Known posture | Decision |
 |---|---|---|---|
 | User PGN | Private import and analysis | Rights depend on content and user | Accept with user attestation and private-by-default handling |
+| FIDE rating downloads | Player identity, titles, federation, monthly rating observations | Official machine-readable downloads; downstream use still requires policy/legal review | Preferred identity/rating anchor after review |
 | Lichess standard games | Open reference and research corpus | Lichess exports state CC0 | Preferred open foundation |
 | Lichess broadcasts | OTB/broadcast research | Listed separately as CC BY-SA 4.0 | Keep license class separate; attribution/share-alike review required |
 | Lichess evaluations | Engine-labelled research | Export page states database exports are CC0; verify each dataset note | Candidate for experiments, with snapshot provenance |
 | Chess.com PubAPI | User-linked/on-demand imports | Public read-only API; not a blanket CC0 grant | Integrate conservatively; do not mass mirror without review |
+| Wikidata / Wikimedia Commons | Identity corroboration and licensed portraits | Open-data/media projects with claim/file-specific provenance and attribution | Candidate enrichment source; never treat identity matches as certain by default |
+| 2700Chess / Take Take Take | Live-rating and player-card benchmark | No suitable public production API/license identified in this review | Reference or partnership only; no undocumented scraping |
+| The Week in Chess | Event discovery and weekly PGN reference | Archive states personal use only and all rights reserved | Permission/license required for a shared production corpus |
 | Commercial databases | User-owned local workflows only until licensed | Proprietary | No public corpus ingestion or redistribution |
 | Licensed OTB corpus | Professional reference database | Contract-dependent | Later strategic partnership |
 | Coach/user annotations | Private knowledge and collaboration | User/contract-dependent | Explicit ownership, sharing, and deletion rules |

@@ -19,19 +19,24 @@ This directory is the source of truth for what ChessScope is, why it exists, and
 6. [Competitive landscape](research/02-competitive-landscape.md)
 7. [Data sources and licensing](research/03-data-sources-and-licensing.md)
 8. [Risk register](research/04-risk-register.md)
-9. [System overview](architecture/01-system-overview.md)
-10. [Domain model](architecture/02-domain-model.md)
-11. [Ingestion and position index](architecture/03-ingestion-and-position-index.md)
-12. [Analytics methodology](architecture/04-analytics-methodology.md)
-13. [Engine platform](architecture/05-engine-platform.md)
-14. [AI and evidence](architecture/06-ai-and-evidence.md)
-15. [Security and privacy](architecture/07-security-and-privacy.md)
-16. [Information architecture](ux/01-information-architecture.md)
-17. [Core workflows](ux/02-core-workflows.md)
-18. [Roadmap](delivery/01-roadmap.md)
-19. [Quality and validation](delivery/02-quality-and-validation.md)
-20. [UI/UX system](design/UI_UX_SYSTEM.md)
-21. [Architecture decisions](adr/)
+9. [Backend technical specification](backend/BACKEND_TECHNICAL_SPEC.md)
+10. [Backend system design](backend/SYSTEM_DESIGN.md)
+11. [PostgreSQL database design](backend/DATABASE_DESIGN.md)
+12. [Backend phased implementation plan](backend/PHASED_IMPLEMENTATION_PLAN.md)
+13. [Integration and OSINT catalog](integrations/INTEGRATION_OSINT_CATALOG.md)
+14. [System overview](architecture/01-system-overview.md)
+15. [Domain model](architecture/02-domain-model.md)
+16. [Ingestion and position index](architecture/03-ingestion-and-position-index.md)
+17. [Analytics methodology](architecture/04-analytics-methodology.md)
+18. [Engine platform](architecture/05-engine-platform.md)
+19. [AI and evidence](architecture/06-ai-and-evidence.md)
+20. [Security and privacy](architecture/07-security-and-privacy.md)
+21. [Information architecture](ux/01-information-architecture.md)
+22. [Core workflows](ux/02-core-workflows.md)
+23. [Roadmap](delivery/01-roadmap.md)
+24. [Quality and validation](delivery/02-quality-and-validation.md)
+25. [UI/UX system](design/UI_UX_SYSTEM.md)
+26. [Architecture decisions](adr/)
 
 ## Fixed decisions
 
@@ -43,6 +48,9 @@ This directory is the source of truth for what ChessScope is, why it exists, and
 | Data posture | Hybrid cloud/local; user-private material must remain separable |
 | First-release scope | Database exploration and advanced player analytics |
 | Initial inputs | PGN plus Lichess and Chess.com user imports |
+| Backend stack | Python, Django, DRF, PostgreSQL, Celery, RabbitMQ, Redis, and S3-compatible object storage |
+| Deployment shape | Modular monolith with independently scalable ingestion, indexing, analytics, integration, and engine workers |
+| Initial capacity envelope | 300–500 concurrent sessions and 1–10 million games, validated by phase benchmarks |
 | Game editing | Variations, comments, NAGs, diagrams, and chapters; not a full publishing suite initially |
 | Engine direction | Local and cloud analysis behind one reproducible job contract |
 | Scale ambition | Grow toward ChessBase-class corpus and workflows without designing day one for maximum scale |
