@@ -40,6 +40,7 @@ Start with [docs/README.md](docs/README.md). The context is organized into:
 - `docs/product/` — vision, users, requirements, boundaries, and success criteria;
 - `docs/research/` — ChessBase benchmark, competitors, data rights, and risks;
 - `docs/architecture/` — system, data, analytics, engines, AI, and security;
+- `docs/design/` — canonical UI/UX direction, design tokens, page blueprints, and interaction rules;
 - `docs/ux/` — information architecture and core workflows;
 - `docs/delivery/` — roadmap and validation strategy;
 - `docs/adr/` — durable architectural decisions and unresolved decisions.

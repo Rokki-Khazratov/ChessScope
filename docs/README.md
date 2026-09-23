@@ -30,7 +30,8 @@ This directory is the source of truth for what ChessScope is, why it exists, and
 17. [Core workflows](ux/02-core-workflows.md)
 18. [Roadmap](delivery/01-roadmap.md)
 19. [Quality and validation](delivery/02-quality-and-validation.md)
-20. [Architecture decisions](adr/)
+20. [UI/UX system](design/UI_UX_SYSTEM.md)
+21. [Architecture decisions](adr/)
 
 ## Fixed decisions
 
