@@ -1,6 +1,6 @@
 # ChessBase benchmark
 
-Status: product and workflow benchmark  
+Status: product and workflow benchmark
 Reviewed: 2026-09-23
 
 ## Purpose

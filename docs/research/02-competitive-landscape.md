@@ -1,6 +1,6 @@
 # Competitive landscape
 
-Status: directional map, not exhaustive market due diligence  
+Status: directional map, not exhaustive market due diligence
 Reviewed: 2026-09-23
 
 ## Market structure

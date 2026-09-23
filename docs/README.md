@@ -1,6 +1,6 @@
 # ChessScope context index
 
-Status: baseline specification  
+Status: baseline specification
 Last updated: 2026-09-23
 
 This directory is the source of truth for what ChessScope is, why it exists, and which constraints implementation must preserve. Documents use three confidence labels:

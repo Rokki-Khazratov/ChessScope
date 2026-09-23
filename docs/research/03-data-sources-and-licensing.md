@@ -1,6 +1,6 @@
 # Data sources and licensing
 
-Status: engineering guidance; legal review still required  
+Status: engineering guidance; legal review still required
 Reviewed: 2026-09-23
 
 This document is not legal advice. Access to data, rights to process it, rights to redistribute it, and rights to train models on it are separate questions.

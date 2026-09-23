@@ -1,6 +1,6 @@
 # ADR 0002: Web-first product with a hybrid local boundary
 
-Status: accepted product direction  
+Status: accepted product direction
 Date: 2026-09-23
 
 ## Context

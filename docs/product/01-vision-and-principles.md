@@ -1,6 +1,6 @@
 # Vision and principles
 
-Status: accepted direction  
+Status: accepted direction
 Owners: product and architecture
 
 ## Vision

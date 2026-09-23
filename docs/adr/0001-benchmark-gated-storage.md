@@ -1,6 +1,6 @@
 # ADR 0001: Benchmark-gated storage evolution
 
-Status: accepted as baseline  
+Status: accepted as baseline
 Date: 2026-09-23
 
 ## Context
