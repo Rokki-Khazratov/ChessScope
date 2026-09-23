@@ -1,6 +1,8 @@
 # Domain model
 
-Status: conceptual model; physical schema is deferred
+Status: conceptual model; physical baseline is defined separately
+
+The PostgreSQL tables, keys, indexes, partition strategy, retention, and migration rules are defined in [PostgreSQL database design](../backend/DATABASE_DESIGN.md). This document remains the storage-independent domain vocabulary.
 
 ## Design rules
 

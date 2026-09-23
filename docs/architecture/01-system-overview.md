@@ -50,9 +50,11 @@ Start as a modular monolith plus workers, not a fleet of microservices:
 5. **Engine worker** — isolated UCI process execution.
 6. **Primary database** — PostgreSQL for users, games, metadata, jobs, evidence, and initial position occurrences.
 7. **Object storage** — immutable raw imports, large exports, and reproducibility artifacts.
-8. **Queue** — durable asynchronous work with leases and cancellation.
+8. **Queue and coordination** — RabbitMQ for durable Celery delivery; Redis for disposable caching, rate state, short locks, and progress fan-out. PostgreSQL remains authoritative for application job state, leases, idempotency, and the transactional outbox.
 
 Modules must have explicit contracts so high-volume position storage and engine fleets can move out later without changing the domain model.
+
+The implementation-level runtime topology, request flows, failure behavior, and scale envelope are defined in [Backend system design](../backend/SYSTEM_DESIGN.md). The normative backend requirements are in [Backend technical specification](../backend/BACKEND_TECHNICAL_SPEC.md).
 
 ## Request classes
 
