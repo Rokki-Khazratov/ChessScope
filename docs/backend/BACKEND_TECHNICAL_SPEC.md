@@ -2,7 +2,7 @@
 
 Status: implementation baseline
 Owner: backend/platform
-Last updated: 2026-09-23
+Last updated: 2026-09-26
 
 ## 1. Purpose
 
@@ -44,7 +44,7 @@ These are capacity assumptions to verify in load tests, not marketing promises:
 - 16–64 concurrent Stockfish processes, isolated from API compute;
 - 1–10 million canonical games in the first professional deployment;
 - 100–800 million position occurrences, depending on corpus and indexing policy;
-- evolution toward 100 million games through storage specialization, not a day-one schema rewrite.
+- evolution toward 100 million and then 1 billion approved online games through storage specialization; high-quality FIDE-linked OTB games remain a separate corpus.
 
 ### 3.2 SLOs
 
@@ -82,6 +82,7 @@ Each module owns its services and public contract. Cross-module writes go throug
 12. **integrations** — provider adapters, credentials, rate limits, conditional requests, sync state.
 13. **jobs** — durable application job state, progress, attempts, errors, idempotency.
 14. **audit** — security events, access logs, administrative actions, data deletion trail.
+15. **billing** — hosted checkout sessions, verified provider events, subscriptions, entitlements, quota effects, and billing portal handoff.
 
 ## 5. API contract
 
@@ -125,6 +126,7 @@ Each module owns its services and public contract. Cross-module writes go throug
 /api/v1/studies/*
 /api/v1/integrations/*
 /api/v1/jobs/*
+/api/v1/billing/*
 /api/v1/admin/*
 ```
 
@@ -139,6 +141,15 @@ Detailed serializers must expose provenance, freshness, coverage, and visibility
 - Workspace roles start with `owner`, `admin`, `analyst`, `member`, and `viewer`.
 - Object-level access is checked before serialization and before a job is queued.
 - DRF throttling protects fair use and cost budgets but is not treated as DDoS protection.
+
+### 5.5 Paid entitlement
+
+- Landing and account creation are public/standard-auth routes; the paid research app requires an active entitlement.
+- Hosted checkout creates a provider session linked to a ChessScope user/workspace. A browser redirect alone never grants access.
+- Verify provider webhook signatures, persist event ID/payload reference, and process events idempotently, including duplicates and out-of-order delivery.
+- Subscription, invoice/payment, cancellation, grace period, and refund states map to a versioned internal entitlement and compute quota policy.
+- Paid engine or AI jobs check entitlement when queued and again before expensive execution.
+- Provider and price plan remain open choices; no billing secret is exposed to React.
 
 ## 6. Asynchronous job contract
 
@@ -237,6 +248,8 @@ The player card is a versioned projection, not a single scraped record. It combi
 - source coverage, last refresh, identity confidence, and warnings.
 
 FIDE, Lichess, and Chess.com rating pools remain separate. A synthetic cross-platform score, if ever introduced, is a named metric with methodology—not a field called “rating.” Sensitive or disputed biographical fields are omitted or corrected through provenance-aware workflows.
+
+The first paid release prioritizes official FIDE identity/rating observations and eligible OTB/broadcast games. A FIDE ID identifies a research subject; it is not a ChessScope authentication credential. Online accounts are separately verified before linking to a FIDE person. The opponent report and branch-aware coach contract are defined in [Professional coach release](../product/05-professional-coach-release.md) and [Coaching chat architecture](../architecture/10-coach-chat-variation-state.md).
 
 ## 11. Caching and consistency
 

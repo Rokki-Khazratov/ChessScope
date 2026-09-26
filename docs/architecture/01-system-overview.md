@@ -4,7 +4,7 @@ Status: proposed baseline; validate through ADRs and benchmarks
 
 ## Architectural goals
 
-- serve the first database-and-analytics product without premature distribution;
+- serve the first FIDE-centered opponent research and board-synchronized coaching product without premature distribution;
 - preserve a path from user PGN collections to ChessBase-class corpora;
 - make position identity and provenance stable across storage changes;
 - support web-first use with optional local/private data and compute;
@@ -15,7 +15,7 @@ Status: proposed baseline; validate through ADRs and benchmarks
 
 ```mermaid
 flowchart TB
-    S[PGN / Lichess / Chess.com] --> I[Ingestion]
+    S[FIDE ratings / OTB PGN / online PGN] --> I[Ingestion]
     I --> R[(Raw source storage)]
     I --> C[Canonical chess model]
     C --> P[(PostgreSQL)]
@@ -68,7 +68,7 @@ Imports, deduplication, large analytics, engine batches, report generation, and 
 
 ### AI-orchestrated
 
-Later natural-language requests call typed deterministic tools. They produce claims only after evidence validation. Failure of an AI provider must not disable ordinary database use.
+First-release coaching requests call typed deterministic tools with the active board node and named branch context. They produce factual claims only after evidence validation. Failure of an AI provider must not disable ordinary database or board use. See [Coaching chat and variation state](10-coach-chat-variation-state.md).
 
 ## Hybrid boundary
 

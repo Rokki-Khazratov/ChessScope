@@ -1,17 +1,17 @@
 # Scope and requirements
 
-Status: baseline requirements; implementation not authorized by this document
+Status: baseline requirements amended by professional coach release decision
 
 ## Release framing
 
-The first product release is **database plus player analytics**. It is not the full end-state platform and does not require natural-language investigation to be considered useful.
-
-The architecture must nevertheless preserve an evidence contract so an AI layer can be added without rebuilding every service.
+The first paid professional release is **FIDE-centered opponent research plus a board-synchronized coaching chat**. It includes a curated OTB corpus, exact position search, persistent variations, cloud engine work, and evidence-linked explanations. The full billion-game online corpus is a later expansion. The detailed contract is in [Professional coach: first product release](05-professional-coach-release.md).
 
 ## MVP capabilities
 
 ### Data intake
 
+- ingest approved OTB/broadcast PGN with explicit rights and source coverage;
+- ingest official FIDE identity/rating observations keyed by FIDE ID;
 - import PGN files with games, tags, comments, variations, NAGs, and clock annotations where present;
 - import a user's Lichess games with explicit authorization;
 - import a user's public Chess.com game archives within API rules;
@@ -29,7 +29,7 @@ The architecture must nevertheless preserve an evidence contract so an AI layer 
 ### Game workspace
 
 - board and move navigation;
-- main line and nested variations;
+- main line, named nested variations, stable node IDs, and branch-aware chat context;
 - text comments, NAGs, graphical annotations, and diagrams;
 - chapter grouping for research and preparation;
 - import/export of supported PGN semantics with explicit loss reporting.
@@ -44,7 +44,7 @@ The architecture must nevertheless preserve an evidence contract so an AI layer 
 
 ### Engine analysis
 
-- local and cloud execution through one job model;
+- cloud Stockfish workers on dedicated CPU hosts, with a compatible later local route;
 - explicit quick, standard, deep, and research budgets;
 - MultiPV, centipawn/WDL, principal variations, engine/version, and hardware/job provenance;
 - cancellation, timeouts, deduplication, and cached reuse.
@@ -55,15 +55,27 @@ The architecture must nevertheless preserve an evidence contract so an AI layer 
 - every engine claim returns position, engine identity, options, and budget;
 - exports preserve evidence references or clearly declare when they cannot.
 
+### Coaching chat and opponent briefing
+
+- chat receives the active board node, selected branch, chapter, cohort, and relevant prior branch context;
+- answer historical position questions from games and prospective move questions from bounded engine analysis;
+- preview legal candidate lines, show board arrows/highlights, and add a named variation after user acceptance;
+- produce a progressive opponent report targeting a completed briefing within ten minutes when pre-indexed corpus coverage is sufficient;
+- retain every claim's source game, metric, or engine-job reference.
+
+### Paid access
+
+- support landing, account, hosted payment, entitlement-confirmed dashboard, billing management, and cancellation;
+- keep provider webhook handling idempotent and require verified entitlement before paid work is queued.
+
 ## Later capabilities
 
-- natural-language analytical investigations;
 - novelty and preparation-surprise models;
 - conversion and recovery metrics based on calibrated engine labels;
 - similar pawn-structure and piece-configuration search;
 - repertoire building and training;
 - coach/team workspaces and collaboration;
-- licensed professional OTB datasets;
+- broader licensed professional OTB datasets and full billion-game online indexing;
 - desktop/local companion and offline workflows;
 - human-move models and rating-conditioned practical difficulty.
 

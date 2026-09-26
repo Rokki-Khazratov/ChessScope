@@ -112,6 +112,8 @@ Use five permanent destinations:
 
 Investigations are not a permanent top-level destination in MVP. A saved investigation appears in Home, Library, and contextual history. If research later shows investigations becoming a primary durable object, promote them without adding another permanent tab prematurely.
 
+Professional-release amendment (2026-09-26): the board workspace includes a persistent coaching conversation tied to the selected variation node. The chat is contextual, so it does not require a sixth global destination. [Release scope](../product/05-professional-coach-release.md) and [variation-state contract](../architecture/10-coach-chat-variation-state.md) govern this interaction.
+
 ### 4.2 Contextual navigation
 
 Object pages use a local tab row:
@@ -129,7 +131,7 @@ Tabs represent stable peer views. Temporary tools do not become tabs.
 |---|---|
 | Page | A durable object or broad research mode with a URL |
 | Workspace pane | Simultaneous manipulation: board, notation, reference, engine |
-| Right context panel | Inspecting filters, engine details, metadata, or an investigation without losing the main object |
+| Right context panel | Persistent coaching chat in the professional analysis workspace; contextual inspection of filters, engine details, or metadata elsewhere |
 | Drawer | Evidence details, query method, import report, or secondary inspection |
 | Modal | Short blocking decision, destructive confirmation, entity disambiguation |
 | Popover | Small selection or explanation anchored to a control |
@@ -143,7 +145,7 @@ Every Player, Game, Position, Opening, Study, Corpus, Query, and Evidence Bundle
 
 ### 5.1 Recommended shell
 
-Use a collapsible left navigation rail, a flexible central canvas, and one optional right context panel. A minimal contextual toolbar sits above the canvas. Avoid a permanent bottom panel except in Game Workspace, where a lower reference/engine region may be more spatially efficient.
+Use a collapsible left navigation rail and a flexible central canvas. The professional Game Workspace keeps the coaching panel visible on desktop, alongside a readable move tree and engine/database controls. Other screens may use an optional context panel. A minimal contextual toolbar sits above the canvas.
 
 ```text
 +------------------------------------------------------------------+
@@ -284,17 +286,14 @@ Sorting, pagination/virtualization, column configuration, and saved queries are 
 
 ```text
 +----------------------+-----------------------------------------+
-|                      | game header / metadata                   |
-|                      +-----------------------------------------+
-|        BOARD         | notation and nested variations          |
-|                      | comments inline                         |
-|                      |                                         |
+|        BOARD         | game header / metadata                  |
+| arrows / previews    | named move tree and nested variations   |
+|                      | engine lines / database references      |
+|                      | coaching chat + source-game cards       |
 +----------------------+-----------------------------------------+
-| Reference | Engine | Evidence | Notes                           |
-+----------------------------------------------------------------+
 ```
 
-At wider sizes the lower region can become a right-side pane. The user can save proportions per mode. Do not expose arbitrary docking in MVP.
+The user can save proportions per mode. At narrower widths, the chat and reference controls use a deliberate switcher while the active branch remains visible. Do not expose arbitrary docking in the first release.
 
 ### 10.2 Board behavior
 
@@ -476,6 +475,8 @@ Evidence type—source, statistic, engine, interpretation—is communicated by l
 ## 17. AI Investigation UX
 
 AI Investigation is a research document with dialogue capability, not a customer-support chat.
+
+In the professional Game Workspace, this dialogue is the right-side coach. Its response can preview a legal line, highlight squares, cite source games, and propose a named branch. The selected move node and saved branch names stay in context as the user navigates; previews never silently rewrite the study.
 
 ### 17.1 Three layers
 
@@ -838,11 +839,11 @@ Error copy is direct: “The PGN ends during move 37. We imported 82 complete ga
 
 ### Desktop 1440+
 
-Full shell, optional context panel, two-column comparisons, board plus notation plus lower reference pane. Large monitors gain simultaneous context, not oversized typography.
+Full shell and two-column comparisons; the professional analysis workspace shows board, move tree, engine/database controls, and coach simultaneously. Large monitors gain simultaneous context, not oversized typography.
 
 ### Laptop 1024–1439
 
-Sidebar may default collapsed. Context panel overlays or replaces secondary space. Board and notation remain side by side where at least a useful 420–480 px board and readable notation fit. Filters become a drawer.
+Sidebar may default collapsed. Board and move tree remain side by side where at least a useful 420–480 px board and readable notation fit. The coach and reference controls can switch within the right column; filters become a drawer.
 
 ### Tablet 768–1023
 

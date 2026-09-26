@@ -1,10 +1,10 @@
 # Roadmap
 
-Status: outcome-based plan; dates begin after project kickoff
+Status: earlier outcome-based sequence; professional first-release ordering is in 03-professional-release-slices.md
 
 The roadmap follows validated outcomes, not a promise to ship every listed feature. The long-term scale target is ChessBase-class capability, reached through measured stages.
 
-Backend delivery phases B0–B8, with implementation scope and acceptance gates, are defined in [Backend phased implementation plan](../backend/PHASED_IMPLEMENTATION_PLAN.md). Those phases refine rather than replace this product roadmap.
+Backend delivery phases B0–B8 provide infrastructure detail in [Backend phased implementation plan](../backend/PHASED_IMPLEMENTATION_PLAN.md). The user's subsequent professional-release decision brings FIDE-centered OTB research, board-synchronized AI coaching, and paid access into the first release. The updated delivery sequence is [Professional release slices](03-professional-release-slices.md), which controls ordering where this earlier roadmap differs.
 
 ## Phase 0 — de-risk the foundation (0–3 months)
 

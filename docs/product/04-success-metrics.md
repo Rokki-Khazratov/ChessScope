@@ -10,6 +10,8 @@ ChessScope should be judged by research outcomes, not by feature count or genera
 
 This requires qualitative task studies before it can be reduced to one numeric KPI.
 
+For the first paid professional release, the canonical study task is preparing for an unfamiliar FIDE opponent within ten minutes using eligible OTB games, a saved analysis branch, and a source-backed coaching answer. Track corpus coverage and report trust alongside completion time.
+
 ## Product metrics
 
 | Dimension | Candidate measure | Guardrail |
@@ -47,7 +49,7 @@ Initial targets are hypotheses until benchmarked with realistic hardware and cor
 - cost per analyzed position and per imported game is observable;
 - local analysis does not upload private positions unless the user selects a cloud path.
 
-## AI quality, when introduced
+## AI coaching quality in the first paid release
 
 Measure separately:
 
@@ -57,6 +59,9 @@ Measure separately:
 - evidence precision and recall;
 - unsupported-claim rate;
 - ambiguity handling;
+- reference accuracy for named variation branches and active board nodes;
+- legality of proposed branch moves and resistance to stale board updates;
+- unjustified use of “forced” for goal-oriented engine lines;
 - refusal/insufficient-evidence correctness;
 - latency and provider cost.
 

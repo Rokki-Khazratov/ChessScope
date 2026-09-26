@@ -3,13 +3,15 @@
 Status: accepted architectural principle
 Date: 2026-09-23
 
+Release-order amendment (2026-09-26): the user selected a constrained board-synchronized coaching chat for the first paid professional release. The evidence-first architectural decision below remains accepted. The earlier sentence describing an LLM-free first MVP records the previous sequencing and is superseded by [Professional coach release](../product/05-professional-coach-release.md).
+
 ## Context
 
 Natural language is valuable for multi-stage chess research, but language models can invent games, players, counts, moves, or historical claims. Exact position search and statistics are structured computation problems, not semantic retrieval problems.
 
 ## Decision
 
-ChessScope's future AI layer will orchestrate typed, permission-scoped deterministic tools and explain their outputs. It will not be the source of truth for chess data, metrics, legal moves, or engine evaluations.
+ChessScope's AI layer orchestrates typed, permission-scoped deterministic tools and explains their outputs. It is not the source of truth for chess data, metrics, legal moves, or engine evaluations.
 
 Material factual claims require evidence references. A claim-verification layer checks numeric and entity correspondence before rendering claims as facts. Interpretations remain visually distinct.
 

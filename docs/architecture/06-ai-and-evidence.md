@@ -1,6 +1,8 @@
 # AI and evidence
 
-Status: long-term platform contract; AI investigation is not required for the first MVP
+Status: platform contract; constrained board-synchronized coaching chat is required for the first paid professional release
+
+The active board node, named variations, stale-response handling, and structured chat memory are specified in [Board-synchronized coaching chat](10-coach-chat-variation-state.md). The first release only needs the typed tools that support historical position questions, bounded engine plans, board features, and opponent reports; the broader tool list below remains the long-term surface.
 
 ## Core separation
 
@@ -111,7 +113,7 @@ The interface shows matched count, corpus, definition, filters, continuation dis
 
 ## Provider strategy
 
-Do not train a language model initially. Define a provider-neutral orchestration boundary and select models through a ChessScope-specific evaluation suite. Support a commercial API path for quality and a local/open-weight path for privacy only when each meets measurable requirements.
+Do not train a language model initially. Define a provider-neutral orchestration boundary and select models through a ChessScope-specific evaluation suite. “Our AI coach” describes our orchestration, chess tools, memory, validation, and UX; it does not require training a foundation model from scratch. Support a commercial API path for quality and a local/open-weight path for privacy only when each meets measurable requirements.
 
 Provider portability does not mean the lowest common denominator. Tool/evidence semantics remain stable while adapters may use provider-specific structured-output capabilities.
 

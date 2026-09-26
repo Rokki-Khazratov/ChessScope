@@ -3,6 +3,8 @@
 Status: proposed delivery contract
 Last updated: 2026-09-23
 
+> The 2026-09-26 professional-release decision changes first-release priority. Use [Professional release slices](../delivery/03-professional-release-slices.md) for the delivery order of FIDE/OTB corpus, board, VPS engine, paid access, and coaching chat. B0–B8 remain backend component and acceptance detail; the statement below that B0–B5 alone form the smallest alpha is superseded for a paid professional release.
+
 ## 1. How to use this plan
 
 This plan decomposes the backend technical specification into vertical, testable phases. Phase numbers here are backend delivery phases (`B0`–`B8`) and map onto the broader product roadmap; they do not replace product discovery gates.
@@ -30,7 +32,7 @@ Rules:
 | B7 | typed investigation tools and evidence-first AI | 5–7 weeks | Product Phase 2 |
 | B8 | collaboration, scale hardening, and beta operations | 6–10 weeks | Product Phase 3 |
 
-The smallest serious alpha is B0–B5. B6 can run partly in parallel after stable position identity exists. B7 must not precede deterministic evidence APIs.
+An earlier database-only alpha could stop at B5. The selected paid professional release also needs B6 engine capability, a constrained B7 coach, and billing/entitlement work. B6 can run partly in parallel after stable position identity exists. B7 must not precede deterministic evidence APIs. See [professional release slices](../delivery/03-professional-release-slices.md) for the delivery order.
 
 ## 3. B0 — foundation decisions and disposable benchmarks
 

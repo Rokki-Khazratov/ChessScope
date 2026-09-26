@@ -108,7 +108,7 @@ Concurrent edits create an explicit conflict or merge workflow; they never silen
 6. Persist the completed result with engine provenance.
 7. Reuse only a compatible cached result.
 
-## 7. Ask an analytical question (later)
+## 7. Ask an analytical question in the coaching chat
 
 ### Flow
 
@@ -118,6 +118,8 @@ Concurrent edits create an explicit conflict or merge workflow; they never silen
 4. Claim verifier checks facts and evidence.
 5. Answer renders with evidence objects and caveats.
 6. User opens games, modifies filters, or saves the investigation.
+
+The assistant turn is bound to the selected variation node and tree revision. It can preview legal lines on the board and propose a named branch; saved branch creation checks the current revision and user action. See [variation-aware coaching contract](../architecture/10-coach-chat-variation-state.md).
 
 ### Recovery
 

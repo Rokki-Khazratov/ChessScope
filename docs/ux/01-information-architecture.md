@@ -16,7 +16,7 @@ Keep the stable top level small:
 4. **Players** — profiles, comparisons, trends, and preparation.
 5. **Library** — imported corpora, studies, chapters, and data-source status.
 
-Later AI investigation should be available globally through the command/search surface and contextually inside a player, position, or game. It does not need to become a separate universe.
+The first paid professional workspace has a persistent right-side coaching chat alongside the board, notation, and engine/database evidence. Investigation is also reachable from player, position, and game contexts. The exact behavior is in [Professional coach release](../product/05-professional-coach-release.md) and [variation-aware chat](../architecture/10-coach-chat-variation-state.md).
 
 ## Universal object model
 
@@ -36,7 +36,7 @@ Users should never have to remember which database window owns a fact.
 
 ### Explore
 
-One input accepts player names, game metadata, FEN/PGN, opening names, and later natural-language questions. Type detection remains visible and correctable.
+One input accepts player names/FIDE IDs, game metadata, FEN/PGN, opening names, and natural-language questions. Type detection remains visible and correctable.
 
 Results are grouped by object type and show corpus/visibility. Advanced filters expand without replacing the simple entry point.
 
@@ -70,16 +70,14 @@ The selected corpus and filters remain visible.
 
 ### Game workspace
 
-Default layout:
+Default professional desktop layout:
 
 ```text
 +----------------------+--------------------------+
-|                      | notation / variations    |
-|        board         | comments / chapters      |
-|                      |                          |
+|        board         | notation / named branches|
+| arrows / preview     | engine + source evidence |
+|                      | coaching chat             |
 +----------------------+--------------------------+
-| reference / engine / evidence / investigation  |
-+-------------------------------------------------+
 ```
 
 Panels are contextual and rearrangeable later. The initial product should avoid making layout configuration a prerequisite.

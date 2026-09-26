@@ -1,7 +1,7 @@
 # PostgreSQL database design
 
 Status: physical schema baseline; validate with benchmarks before migration code
-Last updated: 2026-09-23
+Last updated: 2026-09-26
 
 ## 1. Principles
 
@@ -28,6 +28,7 @@ Logical PostgreSQL schemas are optional operationally, but ownership boundaries 
 | `evidence` | bundles, items, claims |
 | `study` | studies, chapters, annotations, shares |
 | `ops` | jobs, outbox, idempotency, audit, quotas |
+| `billing` | provider events, subscriptions, entitlements |
 
 ## 3. Identity types and conventions
 
@@ -110,9 +111,17 @@ game_revision(id bigint, game_id, revision_no, white_player_id?, black_player_id
 game_source_link(game_id, game_revision_id, source_game_id, relation, confidence)
 game_line(id, workspace_id, game_revision_id?, parent_line_id?, parent_ply?, order_key,
           move_blob, comment_doc?, version, created_by)
+analysis_workspace(id, workspace_id, owner_user_id, title, corpus_snapshot_id?, version)
+variation_node(id, analysis_workspace_id, chapter_id?, parent_node_id?, root_fen?,
+               uci_move?, san?, position_key, node_fen, label?, order_key,
+               tree_revision, created_by, created_at)
+node_annotation(id, variation_node_id, body, arrows, highlighted_squares,
+                evidence_bundle_id?, version)
 ```
 
 `move_blob` is a versioned compact canonical sequence. The application can generate SAN/PGN; a lossless source payload remains in object storage/source records. `canonical_game` is stable identity; `game_revision` captures corrections and user-owned variation content is not merged into public source content by default.
+
+`variation_node` is the durable addressable unit for the coaching chat. A node stores both its move path identity and resulting exact position; transpositions may share a position key but remain distinct nodes. `game_line` can remain a compact import/export representation or be migrated to the node tree after benchmarking and an ADR; do not maintain two independently editable truths.
 
 Indexes are chosen from measured queries: `(white_player_id, played_on DESC)`, `(black_player_id, played_on DESC)`, event/date, ECO/date, and a dedup content-hash index. Avoid separate low-selectivity indexes on every PGN tag.
 
@@ -182,9 +191,28 @@ outbox_event(id bigint, aggregate_type, aggregate_id, event_type, schema_version
 idempotency_record(scope, key_hash, request_hash, response_ref, expires_at)
 audit_event(id bigint, occurred_at, actor_user_id?, workspace_id?, event_type,
             resource_type?, resource_id?, reason?, ip_hash?, metadata)
+chat_thread(id, workspace_id, analysis_workspace_id, title, created_by, created_at)
+chat_message(id, thread_id, author_kind, body, active_node_id, tree_revision,
+             model_id?, status, created_at)
+coach_tool_result(id, message_id, tool_name, input_hash, evidence_bundle_id?,
+                  result_object_key?, status, cost_units)
+coach_action(id, message_id, parent_node_id, expected_tree_revision,
+             action_type, proposed_moves, status, accepted_by?, accepted_at?)
+opponent_report(id, workspace_id, subject_player_id, requester_id,
+                corpus_snapshot_id, filter_hash, job_id, evidence_bundle_id?,
+                generated_at?, status)
+billing_customer(id, workspace_id, provider, provider_customer_id, created_at)
+billing_subscription(id, billing_customer_id, provider_subscription_id,
+                     plan_code, provider_status, current_period_end?, version, updated_at)
+billing_event(id, provider, provider_event_id, event_type, payload_object_key,
+              received_at, processed_at?, processing_state)
+entitlement(id, workspace_id, code, status, starts_at, ends_at?, source_subscription_id?,
+            version, updated_at)
 ```
 
 Analysis result uniqueness is the complete reproducibility/cache key. Private results are never reused across workspaces unless the policy explicitly proves the inputs are public and the cache scope is safe.
+
+Constraints: unique `(provider, provider_event_id)` on billing events; unique provider subscription ID; entitlement updates are monotonic/versioned under a workspace lock; `coach_action` requires the expected tree revision and its parent node in the same workspace; chat messages retain the historical node ID even after navigation; billing payloads are private, retained under provider policy, and never included in AI context.
 
 ## 5. Partition and retention policy
 

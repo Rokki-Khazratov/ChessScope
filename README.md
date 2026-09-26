@@ -13,11 +13,11 @@ The repository is in the **product-definition and architecture phase**. It inten
 - professional ChessBase-class ambition, designed from an AI-native starting point;
 - web-first product, with a desktop/local companion considered after the web foundation;
 - hybrid data model: cloud services plus private/local user data and compute;
-- first usable release centered on database exploration and player analytics;
-- PGN import plus user-authorized Lichess and Chess.com imports;
+- first paid professional release centered on FIDE player research, an OTB game corpus, board-synchronized coaching chat, and reproducible engine analysis;
+- approved OTB/broadcast PGN and official FIDE ratings first; online game imports remain a separate cohort;
 - local and cloud engine execution as the long-term engine model;
 - English as the repository and product-specification language;
-- commercial versus open-source product strategy deliberately left open.
+- landing -> account -> payment -> dashboard -> analysis workspace as the target commercial journey; source-code strategy remains open.
 
 ## Product boundaries
 
@@ -55,7 +55,7 @@ The project follows this order:
 DATA -> INDEX -> STATISTICS -> EVIDENCE -> TOOLS -> AI -> POLISH
 ```
 
-Implementation should not begin until the Phase 0 exit criteria in the roadmap and the backend B0 gates are accepted. The implementation sequence is defined in [the backend phased plan](docs/backend/PHASED_IMPLEMENTATION_PLAN.md).
+The current execution sequence is [professional release slices](docs/delivery/03-professional-release-slices.md). The [backend phased plan](docs/backend/PHASED_IMPLEMENTATION_PLAN.md) supplies component-level acceptance detail. The initial corpus, position index, and VPS engine capacity need benchmark evidence before scale claims are made.
 
 ## License
 

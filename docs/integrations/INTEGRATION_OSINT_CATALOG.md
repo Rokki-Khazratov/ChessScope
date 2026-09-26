@@ -1,7 +1,9 @@
 # Integration and OSINT source catalog
 
 Status: discovery catalog; every production use requires a recorded policy decision
-Reviewed: 2026-09-23
+Reviewed: 2026-09-26
+
+For the professional release, official FIDE ID and approved OTB/broadcast games take precedence over user online-account imports. The billion-game online acquisition and the OTB sourcing gap are analyzed in [Billion-game corpus feasibility](../research/05-billion-game-corpus-feasibility.md).
 
 > This is engineering guidance, not legal advice. Publicly visible data is not automatically licensed for bulk collection, storage, commercial use, redistribution, or model training.
 
@@ -21,15 +23,15 @@ Every adapter must have an owner, source-policy version, terms/license URL, perm
 
 | Priority | Source | Class | Planned use | Decision |
 |---:|---|---|---|---|
-| P0 | User PGN | E | private games, studies, analysis | required |
 | P0 | FIDE rating downloads | B | official player ID/title/federation and monthly ratings | required after policy review |
-| P0 | Lichess API | A | user-authorized account/game imports and public metadata | required |
-| P0 | Lichess open database | A | open game corpus and research datasets | preferred foundation; preserve dataset license class |
-| P0 | Chess.com PubAPI | A/B | user-requested public profile and archive import | required, conservative/on-demand |
+| P0 | Lichess broadcasts | A | eligible OTB/broadcast PGNs with source attribution | separate CC BY-SA handling and coverage audit |
+| P0 | Official tournament broadcasters/organizers | B/C | recent OTB games, event metadata, incremental round feeds | per-provider permission and quality review |
+| P0 | User PGN | E | private games, studies, analysis | required |
+| P1 | Lichess open standard-game database | A | large CC0 online corpus and scale research | keep separate from OTB/FIDE cohort |
+| P1 | Lichess API | A | user-authorized account/game imports and public metadata | add after FIDE/OTB foundation |
+| P1 | Chess.com PubAPI | A/B | user-requested public profile and archive import | conservative/on-demand |
 | P1 | Wikidata | A | identity enrichment and cross-identifiers | candidate; confidence/provenance required |
 | P1 | Wikimedia Commons/MediaWiki API | A | licensed player portraits and attribution | candidate |
-| P1 | Official tournament broadcasts/sites | B/C | pairings, results, games, event metadata | event-by-event policy/permission |
-| P1 | Lichess broadcasts | A | OTB broadcast games/events | separate CC BY-SA handling |
 | P2 | 2700Chess | C/D | live-rating/product benchmark | partnership/API request only |
 | P2 | Take Take Take | C/D | player-card and editorial UX benchmark | partnership/API request only |
 | P2 | Chess-Results | B/C | tournament standings/pairings/results | use documented export/permission; do not assume scraping rights |
@@ -270,10 +272,11 @@ Before a connector moves beyond research, answer and record:
 ## 8. Integration implementation order
 
 ```text
-User PGN
--> FIDE monthly ratings
--> Lichess user connector + open dump
--> Chess.com on-demand user connector
+FIDE monthly ratings
+-> eligible Lichess broadcasts + official OTB partnerships
+-> User PGN
+-> selected Lichess CC0 standard-game dump in a separate online cohort
+-> Lichess and Chess.com account connectors
 -> Wikidata/Commons enrichment
 -> official tournament/broadcast partnerships
 -> live-rating and premium-data partnerships

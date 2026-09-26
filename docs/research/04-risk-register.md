@@ -44,7 +44,7 @@ An LLM should never be the system of record for player identity, game counts, le
 
 ### Infinite product surface
 
-Chess naturally invites openings, analysis, training, puzzles, play, teams, courses, media, and community. The first release remains database plus analytics. New areas require an explicit phase decision.
+Chess naturally invites openings, analysis, training, puzzles, play, teams, courses, media, and community. The selected first paid release includes FIDE-centered database research, the board, engine, and constrained coaching chat. Other areas require an explicit phase decision; see [professional release scope](../product/05-professional-coach-release.md).
 
 ## Risk handling protocol
 

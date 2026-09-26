@@ -1,7 +1,7 @@
 # Data sources and licensing
 
 Status: engineering guidance; legal review still required
-Reviewed: 2026-09-23
+Reviewed: 2026-09-26
 
 The actionable provider/API link register and integration priority are maintained in [Integration and OSINT source catalog](../integrations/INTEGRATION_OSINT_CATALOG.md).
 
@@ -54,7 +54,7 @@ The official PubAPI is a read-only API for public player, game, club, and tourna
 
 Engineering requirements:
 
-- import only user-requested accounts/archives in the first release;
+- import only user-requested accounts/archives when the online-account connector is introduced;
 - use conditional requests and a descriptive user agent;
 - serialize or carefully limit concurrency;
 - retain response and archive provenance;
